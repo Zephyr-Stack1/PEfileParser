@@ -14,7 +14,7 @@
 #include "afxdialogex.h"
 
 
-// PEDetailDoalog �Ի���
+// PEDetailDoalog
 
 IMPLEMENT_DYNAMIC(PEDetailDoalog, CDialog)
 
@@ -41,14 +41,13 @@ BEGIN_MESSAGE_MAP(PEDetailDoalog, CDialog)
 END_MESSAGE_MAP()
 
 
-// PEDetailDoalog ��Ϣ��������
+// PEDetailDoalog
 
 
 void PEDetailDoalog::OnPaint()
 {
 	CPaintDC dc(this); // device context for painting
-	// TODO: �ڴ˴�������Ϣ�����������
-	// ��Ϊ��ͼ��Ϣ���� CDialog::OnPaint()
+	// CDialog::OnPaint()
 	SetWindowTextW(m_windowTitle);
 }
 
@@ -71,10 +70,10 @@ void PEDetailDoalog::OnInitCtrlList()
 	m_ListCtrl.ModifyStyle(0,LVS_REPORT|LVS_SHOWSELALWAYS);
 	m_ListCtrl.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES |LVS_OWNERDRAWFIXED);
 
-	m_ListCtrl.InsertColumn(0,L"�ֶ�",LVCFMT_LEFT,rect.Width()/3);
+	m_ListCtrl.InsertColumn(0,L"LVCFMT1",LVCFMT_LEFT,rect.Width()/3);
 	m_ListCtrl.InsertColumn(1,L"ֵ(HEX)",LVCFMT_LEFT,rect.Width()/6);
-	m_ListCtrl.InsertColumn(2,L"���ƫ��/����",LVCFMT_LEFT,rect.Width()/6);
-	m_ListCtrl.InsertColumn(3,L"˵��",LVCFMT_LEFT,rect.Width()/2);
+	m_ListCtrl.InsertColumn(2,L"LVCFMT2",LVCFMT_LEFT,rect.Width()/6);
+	m_ListCtrl.InsertColumn(3,L"LVCMT3",LVCFMT_LEFT,rect.Width()/2);
 
 	return;
 }
@@ -93,8 +92,7 @@ void PEDetailDoalog::AddToCtrlList(CString* strName,CString* strValue, CString* 
 void PEDetailDoalog::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
-
-	// TODO: �ڴ˴�������Ϣ�����������	
+	
 	if (m_ListCtrl.GetSafeHwnd())
 	{
 		CRect   rect; 
