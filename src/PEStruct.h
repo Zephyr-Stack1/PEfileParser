@@ -12,7 +12,7 @@
 // IMAGE_DOS_HEADER(MS_DOS)
 struct   stMS_DOS
 {
-	WORD e_magic;//magic number DOSͷ���              00h
+	WORD e_magic;//magic number DOS                    00h
 	WORD e_cblp; // Bytes on last page of file		   02h
 	WORD e_cp;	//pages in file						   04h
 	WORD e_crlc;// Relocations						   06h
@@ -36,76 +36,75 @@ struct   stMS_DOS
 //IMAGE_NT_HEADERS 
  struct stPE_HEADER
 {
-	DWORD Signature;		//����PE��־��Ϣ 		    00h         ����Ч��PE�ļ���ֵ�� 00 00 45 50
+	DWORD Signature;
 
-	/*ӳ���ļ�ͷ PE�ļ��Ļ�����Ϣ
-	IMAGE_FILE_HEADER ��ʼ*/
+	/* IMAGE_FILE_HEADER */
 	WORD  Machine;		//								04h	
-	WORD  NumberOfSections;	//							06h		//pe�ļ������������
-	DWORD TimeDateStamp;//								08h		//�ļ�����ʱ���,ָ���pe�ļ����ɵ�ʱ��,����ֵ�Ǵ�1969��12��31��16:00:00����������.
-	DWORD PointerToSymbolTable;//						0ch		//Coff���Է��ű���ƫ�Ƶ�ַ.
-	DWORD NumberOfSymbols;//							10h		//Coff���ű��з��ŵĸ���. ������ǰ������release�汾�ĳ�������0.
-	WORD  SizeOfOptionalHeader;//IMAGE_OPTON_HEADER��С 14h		//IMAGE_OPTIONAL_HEADER32�ṹ�Ĵ�С(�������ֽ�).
-	WORD  Characteristics;//							16h		//���������pe�ļ���һЩ������Ϣ,�����Ƿ��ִ��,�Ƿ���һ����̬���ӿ��
+	WORD  NumberOfSections;	//							06h
+	DWORD TimeDateStamp;//								08h
+	DWORD PointerToSymbolTable;//						0ch
+	DWORD NumberOfSymbols;//							10h
+	WORD  SizeOfOptionalHeader;//IMAGE_OPTON_HEADER     14h		//IMAGE_OPTIONAL_HEADER32
+	WORD  Characteristics;//							16h
 };
 
  //IMAGE_OPTIONAL_HEADERS
  struct stPE_ExtHeader
  {
-	 /*_IMAGE_OPTIONAL_HEADER��ʼ*/
+	 /*_IMAGE_OPTIONAL_HEADER */
 	 // Standard fields
-	 //Magic������ǿ�ִ���ļ���Rom��������ͨ��ִ�г��� �����һ��Ŀ�ִ�г�������010Bh �����PE32+ ��64λ�� 020Bh
-	 WORD    Magic;//									18h		//����,32λpe�ļ���Ϊ010bh
-	 BYTE    MajorLinkerVersion;//						1ah		//���������汾��
-	 BYTE    MinorLinkerVersion;//						1bh		//���������汾��
-	 DWORD   SizeOfCode;//								1ch		//������ܴ�С
-	 DWORD   SizeOfInitializedData;//					20h		//�ѳ�ʼ�����ݶ��ܴ�С
-	 DWORD   SizeOfUninitializedData;//					24h		//δ��ʼ�����ݶ��ܴ�С
-	 DWORD   AddressOfEntryPoint;//						28h		//����ִ����ڵ�ַ(RVA)
-	 DWORD   BaseOfCode;//								2ch		//�������ʼ��ַ(RVA)
-	 DWORD   BaseOfData;//								30h		//���ݶ���ʼ��ַ(RVA)
+	
+	 WORD    Magic;//									18h
+	 BYTE    MajorLinkerVersion;//						1ah
+	 BYTE    MinorLinkerVersion;//						1bh
+	 DWORD   SizeOfCode;//								1ch
+	 DWORD   SizeOfInitializedData;//					20h
+	 DWORD   SizeOfUninitializedData;//					24h
+	 DWORD   AddressOfEntryPoint;//						28h
+	 DWORD   BaseOfCode;//								2ch
+	 DWORD   BaseOfData;//								30h
 	
 	 // NT additional fields.
-	 DWORD   ImageBase;//								34h		//����Ĭ�ϵ�װ����ʼ��ַ
-	 DWORD   SectionAlignment;//						38h		//�ڴ�������Ķ��뵥λ
-	 DWORD   FileAlignment;//							3ch		//�ļ�������Ķ��뵥λ
-	 WORD    MajorOperatingSystemVersion;//				40h		//�������ϵͳ���汾��
-	 WORD    MinorOperatingSystemVersion;//				42h		//�������ϵͳ���汾��
-	 WORD    MajorImageVersion;//						44h		//�Զ������汾��
-	 WORD    MinorImageVersion;//						46h		//�Զ��帱�汾��
-	 WORD    MajorSubsystemVersion;//					48h		//������ϵͳ���汾��
-	 WORD    MinorSubsystemVersion;//					4ah		//������ϵͳ���汾��
-	 DWORD   Win32VersionValue;//						4ch		//����0
-	 DWORD   SizeOfImage;//								50h		//pe�ļ����ڴ��е�ӳ���ܴ�С
-	 DWORD   SizeOfHeaders;//							54h		//��pe�ļ���ʼ���ڱ�(�����ڱ�)���ܴ�С
-	 DWORD   CheckSum;//								58h		//pe�ļ�CRCУ���
-	 WORD    Subsystem;//								5ch		//�û�����ʹ�õ���ϵͳ����
-	 WORD    DllCharacteristics;//						5eh		//Ϊ0
-	 DWORD   SizeOfStackReserve;//						60h		//Ϊ�̵߳�ջ��ʼ�����������ڴ��Ĭ��ֵ
-	 DWORD   SizeOfStackCommit;//						64h		//Ϊ�̵߳�ջ��ʼ�ύ�������ڴ�Ĵ�С
-	 DWORD   SizeOfHeapReserve;//						68h		//Ϊ���̵Ķѱ����������ڴ�Ĵ�С
-	 DWORD   SizeOfHeapCommit;//						6ch		//Ϊ���̵Ķѳ�ʼ�ύ�������ڴ�Ĵ�С
-	 DWORD   LoaderFlags;	//							70h		//Ϊ0	
-	 DWORD   NumberOfRvaAndSizes;//						74h		//����Ŀ¼�ṹ���������,��Ϊ 00000010h
+	 DWORD   ImageBase;//								34h
+	 DWORD   SectionAlignment;//						38h
+	 DWORD   FileAlignment;//							3ch
+	 WORD    MajorOperatingSystemVersion;//				40h
+	 WORD    MinorOperatingSystemVersion;//				42h
+	 WORD    MajorImageVersion;//						44h
+	 WORD    MinorImageVersion;//						46h
+	 WORD    MajorSubsystemVersion;//					48h
+	 WORD    MinorSubsystemVersion;//					4ah
+	 DWORD   Win32VersionValue;//						4ch
+	 DWORD   SizeOfImage;//								50h
+	 DWORD   SizeOfHeaders;//							54h
+	 DWORD   CheckSum;//								58h
+	 WORD    Subsystem;//								5ch
+	 WORD    DllCharacteristics;//						5eh
+	 DWORD   SizeOfStackReserve;//						60h
+	 DWORD   SizeOfStackCommit;//						64h
+	 DWORD   SizeOfHeapReserve;//						68h
+	 DWORD   SizeOfHeapCommit;//						6ch
+	 DWORD   LoaderFlags;	//							70h
+	 DWORD   NumberOfRvaAndSizes;//						74h
 	 IMAGE_DATA_DIRECTORY DataDirectory[16];		//78h	
-	 /*_IMAGE_OPTIONAL_HEADER����*/
+	 /*_IMAGE_OPTIONAL_HEADER */
  };
 
  struct stSECTION_HEADER
  {
-	  BYTE    Name[IMAGE_SIZEOF_SHORT_NAME]; //			00h			����,8���ֽڳ� 
+	  BYTE    Name[IMAGE_SIZEOF_SHORT_NAME]; //			00h
 	  union {
-		 DWORD   PhysicalAddress; //					08h			obj�ļ���,���ε�ʵ�ʵ�ַ
-		 DWORD   VirtualSize;    //									exe��dll�ļ����������ļ��ж���ǰ�Ĵ�С
+		 DWORD   PhysicalAddress; //					08h
+		 DWORD   VirtualSize;    //
 	 } Misc;
-	  DWORD   VirtualAddress;         //				0ch			���RVA(��������ַ)  
-	  DWORD   SizeOfRawData;          //				10h			���ļ��ж����Ĵ�С 
-	  DWORD   PointerToRawData;       //                14h			���ļ��е�ƫ�� 
-	  DWORD   PointerToRelocations;   //				18h			�ض�λ��ƫ��(obj�ļ���ʹ��)
-	  DWORD   PointerToLinenumbers;   // 				1ch			�кű���ƫ��(������) 
-	  WORD    NumberOfRelocations;    //				1eh			�ض�λ����Ŀ(obj�ļ���ʹ��)
-	  WORD    NumberOfLinenumbers;    //				20h			�кű����кŵ���Ŀ
-	  DWORD   Characteristics;        //				24h			������
+	  DWORD   VirtualAddress;         //				0ch
+	  DWORD   SizeOfRawData;          //				10h
+	  DWORD   PointerToRawData;       //                14h
+	  DWORD   PointerToRelocations;   //				18h
+	  DWORD   PointerToLinenumbers;   // 				1ch
+	  WORD    NumberOfRelocations;    //				1eh
+	  WORD    NumberOfLinenumbers;    //				20h
+	  DWORD   Characteristics;        //				24h
  };
 
  struct stIMAGE_IMPORT_DESCRIPTOR 
