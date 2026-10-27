@@ -8,21 +8,20 @@
  ******************************************************************/
 #pragma once
 
-// PEDetailDoalog �Ի���
+// PEDetailDoalog
 
 class PEDetailDoalog : public CDialog
 {
 	DECLARE_DYNAMIC(PEDetailDoalog)
 
 public:
-	PEDetailDoalog(CWnd* pParent = NULL);   // ��׼���캯��
+	PEDetailDoalog(CWnd* pParent = NULL);
 	virtual ~PEDetailDoalog();
 
-// �Ի�������
 	enum { IDD = IDD_PEDETAILDOALOG };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ֧��
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 	DECLARE_MESSAGE_MAP()
 
